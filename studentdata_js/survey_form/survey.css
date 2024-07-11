@@ -1,0 +1,22 @@
+body{
+ display:flex;
+ justify-content: center;
+ align-items: center;
+ background-color: blanchedalmond;
+ flex-direction: column;
+ font-size: 25px;
+}
+td{
+    padding: 0;
+    width: 100px;
+    height: 30px;
+}
+.enter{
+    width:95%;
+    height:95%;
+    border: none;
+    background-color:blanchedalmond;
+}
+table{
+    border:2px solid black;
+}

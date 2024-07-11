@@ -1,0 +1,48 @@
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url('./lap.jpeg');
+    background-size: cover;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    background-color: rgb(6, 6, 6);
+    color: white;
+    overflow: hidden;
+    /* background-image: url(asth2.png); */
+    background-size: cover;
+}
+button{
+    background-color:#271B29;
+    color:aliceblue;
+    border-radius: 50px;
+}
+table, th, td {
+    border: 2px solid white;
+    font-weight: bold;
+}
+th, td {
+    padding: 8px;
+    text-align: left;
+}
+.hidden {
+    display: none;
+}
+#addButton{
+    width:60px;
+    height:30px;
+background-color: rgb(5, 5, 33);;
+border-radius: 20px;
+color: white;
+position: fixed;
+top:80px;
+}
+table{
+    margin-top: 190px;
+    width:680px;
+    height:200px;
+    border-radius: 3px;
+}
