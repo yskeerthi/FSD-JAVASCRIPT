@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>survey form</title>
+    <link rel="stylesheet" href="survey.css">
+    <script src="survey.js"></script>
+</head>
+<body>
+    <h1><u>SURVEY FORM</u></h1>
+    <form>
+        <label> First Name:&nbsp;  &nbsp; &nbsp; &nbsp;  &nbsp;</label>
+        <input type="text" onchange="firsname(event)">
+        <br>
+        <br>
+        <label> Last Name: &nbsp;  &nbsp; &nbsp; &nbsp;  &nbsp;</label>
+        <input type="text" onchange="lastname(event)">
+        <br>
+        <br>
+        <label>Age: &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;</label>
+        <input type="number" onchange="Age(event)">
+        <br>
+        <br>
+        <label>DOB:  &nbsp; &nbsp;   &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;</label>
+        <input type="date" onchange="DOB(event)">
+        <br>
+        <br>
+        <label>Phone Number:  &nbsp; &nbsp;  &nbsp;</label>
+        <input type="text" onchange="phonenumber(event)">
+        <br>
+        <br>
+        <label>FatherName: &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp;</label>
+        <input type="text" onchange="fathername(event)">
+        <br>
+        <br>
+        <label>MotherName: &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;</label>
+        <input type="text" onchange="mothername(event)">
+        <br>
+        <br>
+        <label>Address: &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;</label>
+        <textarea onchange="address(event)"></textarea>
+        <br>
+        <br>
+        <label>Gender: &nbsp;  &nbsp; &nbsp;  &nbsp;</label>
+        <input type="radio" onchange="radio1(event)" name="n">male
+        <input type="radio" onchange="radio2(event)" name="n">female
+        <br>
+        <br>
+        <label>Certifications:</label>
+        <input type="text" onchange="certifications(event)">
+        <br>
+        <h4><u>Academic Details</u></h4>
+        <table border='5' align="center">
+            <tr>
+                <td>S.NO</td>
+                <td>Qualification</td>
+                <td>Name of Institute</td>
+                <td>Percentage</td>
+                <td>Place</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>10th grade</td>
+               <td> <input type="text"  class="enter"></td>
+               <td><input type="text"  class="enter"></td>
+               <td><input type="text"  class="enter"></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Intermediate</td>
+                <td> <input type="text"  class="enter"></td>
+                <td><input type="text"  class="enter"></td>
+                <td><input type="text"  class="enter"></td>
+                
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>BTech</td>
+                <td> <input type="text"  class="enter"></td>
+                <td><input type="text"  class="enter"></td>
+                <td><input type="text"  class="enter"></td>
+                
+            </tr>
+        </table>
+        <br>
+        <label>Skills:</label>
+         <input type="checkbox" onchange="c(event)">C
+         <input type="checkbox" onchange="cpp(event)">CPP
+         <input type="checkbox" onchange="java(event)">JAVA
+         <input type="checkbox" onchange="python(event)">PYTHON
+         <input type="checkbox" onchange="Frontend(event)">Frontend
+         <input type="checkbox" onchange="backend(event)">Backend
+        <br>
+        <br>
+        <label>Hobbies:</label>
+        <input type="text" onchange="hobbies(event)">
+        <br>
+        <br>
+        <label>Profile-Pic:</label>
+        <input type="file" onchange="profile(event)">
+        <br>
+        <br>
+         <!-- <label>Badges</label> -->
+
+        <label>Description:</label>
+        <textarea onchange="desc(event)"></textarea>
+        <button onclick="Submit(event)">submit</button>
+    </form>
+</body>
+</html>
