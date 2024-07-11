@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Board</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('https://png.pngtree.com/background/20230606/original/pngtree-cartoon-cat-sitting-in-the-dirt-on-an-autumn-day-wallpaper-picture-image_2884790.jpg');
+            background-size: cover;
+        }
+        .board {
+            margin-top: 20px;
+            display: grid;
+            gap: 1px;
+            border: 2px solid rgb(9, 9, 9);
+            background-color: rgb(12, 12, 12);
+        }
+        .cell {
+            width: 80px;
+            height: 80px;
+            background-color: rgb(250, 248, 248);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .image {
+            width: 70px;
+            height: 70px;
+        }
+        .controls {
+            margin-top: 20px;
+            display: none;
+        }
+        .dir {
+            width: 100px;
+            height: 50px;
+            font-size: 20px;
+            color: whitesmoke;
+            background-color: #090A0C;
+        }
+        .score {
+            color: white;
+            border-radius: 20px;
+            width: 100px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 0px 10px white;
+            font-size: 20px;
+            margin-top: 20px;
+            background-color: black;
+            border: 1px groove white;
+        }
+        .dir:hover {
+            background-color: rgb(148, 148, 220);
+        }
+        .win-message {
+            color: rgb(1, 78, 1);
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+            animation: winAnimation 1s infinite;
+        }
+        .win-gif {
+            display: none;
+            width: 100px;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        @keyframes winAnimation {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.5); opacity: 0.5; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <img id="win-gif" class="win-gif" src="output-onlinegiftools.gif" alt="Win GIF">
+    <div>
+        <label for="size" style="color: rgb(9, 9, 9); font-size: 20px;"><b>Enter n value : </b></label>
+        <input type="number" id="size" style="font-size: 20px;">
+        <button style="height: 30px; background-color: rgb(247, 164, 97); font-weight: bold;" onclick="generateBoard()">Generate Board</button>
+    </div>
+    <div id="board" class="board"></div>
+    <div id="controls" class="controls">
+        <button class="dir" onclick="move('up')">Up</button>
+        <button class="dir" onclick="move('left')">Left</button>
+        <button class="dir" onclick="move('right')">Right</button>
+        <button class="dir" onclick="move('down')">Down</button>
+    </div>
+    <div class="score">
+        Score: <span id="score">0</span>
+    </div>
+    <div id="win-message" class="win-message"><b>Hurray! You won..!!</b></div>
+    <script>
+        let n;
+        let currentRow = 0;
+        let currentCol = 0;
+        let board;
+        let score = 0;
+        let targetRow, targetCol;
+        let playerImage;
+
+        function generateBoard() {
+            n = parseInt(document.getElementById('size').value);
+            if (isNaN(n) || n <= 0) {
+                alert('Please enter a valid number greater than 0');
+                return;
+            }
+
+            board = document.getElementById('board');
+            board.innerHTML = '';
+            board.style.gridTemplateColumns = 'repeat(' + n + ', 80px)';
+
+            for (let i = 0; i < n; i++) {
+                for (let j = 0; j < n; j++) {
+                    let cell = document.createElement('div');
+                    cell.className = 'cell';
+                    cell.id = 'cell-' + i + '-' + j;
+                    board.appendChild(cell);
+                }
+            }
+
+            playerImage = document.createElement('img');
+            playerImage.src = 'https://cdn.svgator.com/images/2022/07/cute-animated-cat-tutorial.gif';
+            playerImage.className = 'image';
+            document.getElementById('cell-0-0').appendChild(playerImage);
+
+            currentRow = 0;
+            currentCol = 0;
+
+            document.getElementById('controls').style.display = 'block';
+            placeImageRandomly();
+        }
+
+        function move(direction) {
+            let newRow = currentRow;
+            let newCol = currentCol;
+
+            if (direction === 'up' && currentRow > 0) {
+                newRow--;
+            } else if (direction === 'down' && currentRow < n - 1) {
+                newRow++;
+            } else if (direction === 'left' && currentCol > 0) {
+                newCol--;
+            } else if (direction === 'right' && currentCol < n - 1) {
+                newCol++;
+            }
+
+            if (newRow !== currentRow || newCol !== currentCol) {
+                let newCell = document.getElementById('cell-' + newRow + '-' + newCol);
+                newCell.appendChild(playerImage);
+                currentRow = newRow;
+                currentCol = newCol;
+                checkImageReached();
+            }
+        }
+
+        function checkImageReached() {
+            if (currentRow === targetRow && currentCol === targetCol) {
+                score++;
+                document.getElementById('score').textContent = score;
+                let targetCell = document.getElementById('cell-' + targetRow + '-' + targetCol);
+                targetCell.innerHTML = ''; // Clear the target cell image
+                targetCell.appendChild(playerImage); // Move player image to target cell
+                placeImageRandomly();
+
+                if (score === 10) {
+                    displayWinMessage();
+                }
+            }
+        }
+
+        function displayWinMessage() {
+            document.getElementById('win-message').style.display = 'block';
+            document.getElementById('controls').style.display = 'none';
+            document.getElementById('win-gif').style.display = 'block';
+          
+            setTimeout(() => {
+                document.getElementById('win-message').style.animation = 'none';
+            }, 5000); 
+        }
+
+        function placeImageRandomly() {
+            targetRow = Math.floor(Math.random() * n);
+            targetCol = Math.floor(Math.random() * n);
+
+            while (targetRow === currentRow && targetCol === currentCol) {
+                targetRow = Math.floor(Math.random() * n);
+                targetCol = Math.floor(Math.random() * n);
+            }
+
+            let targetCell = document.getElementById('cell-' + targetRow + '-' + targetCol);
+            targetCell.innerHTML = ''; 
+
+            let img = document.createElement('img');
+            img.className = 'image';
+            img.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSM6mIhbPkmf_fwfaNLd6PD-yZq6RCxWCU8HYMVo9DRlGHQyxeqXD_BE6VURqkz3ENCBXg&usqp=CAU';
+            targetCell.appendChild(img);
+        }
+    </script>
+</body>
+</html>
