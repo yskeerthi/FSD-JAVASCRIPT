@@ -116,3 +116,63 @@ let doubledWithThisArg = numbers.map(function(num) {
 console.log(doubledWithThisArg); // Output: [2, 4, 6, 8, 10]
 ```
 **Filter**
+```js
+
+let arr=[1,2,3,4,9,87,45,23,22];
+console.log(arr);
+arr=arr.filter(function(ele)
+{
+    if(ele%2=0)
+    return true;
+    else{
+        return false;
+    }
+});
+console.log(arr);
+```
+***using arrow function***
+```js
+
+let arr=[1,2,3,4,9,87,45,23,22];
+console.log(arr);
+arr=arr.filter((ele)=>
+{
+    if(ele%2==0)
+    return true;
+    else{
+        return false;
+    }
+});
+console.log(arr);
+
+```
+**simple cute way**
+```js
+
+let arr=[1,2,3,4,9,87,45,23,22];
+console.log(arr);
+arr=arr.filter(ele=>(ele<6));
+console.log(arr);
+```
+
+****REDUCE****
+```js
+
+let arr=[1,2,3,4];
+console.log(arr);
+let x=arr.reduce(function(a,b)
+{
+    return a*b;
+})
+console.log(x);//output:24 multiplying all
+```
+
+***SORT***
+```js
+let arr=[1,9,2,12];
+console.log(arr);
+arr=arr.sort((a,b)=>a-b);//increment
+arr=arr.sort((a,b)=>b-a);//decerement
+console.log(arr);
+```
+
