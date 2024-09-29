@@ -1,3 +1,5 @@
+**js Functions**
+```js
 function OnetoN(n) {
     for (let i = 1; i <= n; i++) {
         console.log(i); // Print each number
@@ -5,8 +7,10 @@ function OnetoN(n) {
 }
 OnetoN(11);
 
-
+```
 //Returning an array of numbers
+
+```js
 
 function OnetoN(n) {
     let result = [];
@@ -16,9 +20,12 @@ function OnetoN(n) {
     return result;
 }
 console.log(OnetoN(11));
+```
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-##################         MATH-FUNCTIONS                  ######################
+        **MATH-FUNCTIONS  **
+```js            
+
+
 Math.min() – Returns the smallest number from a list of numbers.
 Math.max() – Returns the largest number from a list of numbers.
 Math.sqrt() – Returns the square root of a number.
@@ -55,12 +62,13 @@ Math.tanh() – Returns the hyperbolic tangent of a number.
 Math.asinh() – Returns the hyperbolic arcsine of a number.
 Math.acosh() – Returns the hyperbolic arccosine of a number.
 Math.atanh() – Returns the hyperbolic arctangent of a number.
+```
 These functions allow a wide range of mathematical operations in JavaScript.
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //write a code to generate a random integer betwween 0 and 10 included in js
 
+```js
 function getRandomInt() {
     return Math.floor(Math.random() * 11); // Multiply by 11 to include 10, then floor to get an integer
 }
@@ -70,7 +78,7 @@ console.log(getRandomInt());
 
 
 //random numbers between -10 and 10 inclusive
-
+```js
 function getRandomIntBetweenMinus10And10() {
     return Math.floor(Math.random() * 21) - 10; // Generates number between -10 and 10
 }
