@@ -1,0 +1,29 @@
+function hello()
+{
+    console.log("hello");
+}
+function mello()
+{
+    console.log("mello");
+}
+setTimeout(hello,5*1000);
+setTimeout(mello,1*1000);
+
+setTimeout(function()
+{
+    console.log("hello keerthi!");
+},2*1000);
+setTimeout(function()
+{
+    console.log("hello keer!");
+},1*1000);
+
+
+// printing values
+for(let i=10;i>=1;i--)
+{
+    setTimeout(function()
+    {
+        console.log(i);
+    },i*500)
+}
