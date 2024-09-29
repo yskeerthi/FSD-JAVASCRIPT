@@ -114,3 +114,5 @@ let doubledWithThisArg = numbers.map(function(num) {
     return num * this.factor;
 }, multiplier);  // `this` refers to `multiplier`
 console.log(doubledWithThisArg); // Output: [2, 4, 6, 8, 10]
+```
+**Filter**
