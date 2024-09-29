@@ -1,0 +1,26 @@
+let x={
+    Name:"keer",
+    Roll:5,
+    branch:"AIML",
+    College:'ACET',
+    Single:'true'
+    
+}
+// console.log(x.Single);//true
+// console.log(x['Roll']);//5
+
+//normal way
+for(const key in x)
+{
+    console.log(key,x[key]);
+}
+//using hasownproperty
+for(const key in x)
+{
+    if(Object.hasOwnProperty.call(x,key))
+    {
+        // console.log(key);//Name,Roll
+        // console.log(x[key]);//keer
+        console.log(key,x[key]);
+    }
+}
